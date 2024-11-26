@@ -13,6 +13,13 @@ export const columns: ColumnDef<User>[] = [
   {
     accessorKey: "email",
     header: "Email",
+    cell: ({ row }) => {
+      return (
+        <Button variant="link" className="p-0 h-auto" asChild>
+          <Link to={`/users/${row.original.id}`}>{row.original.email}</Link>
+        </Button>
+      )
+    }
   },
   {
     accessorKey: "created_at",
