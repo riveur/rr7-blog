@@ -5,7 +5,10 @@ export default [
     index("routes/home.tsx"),
     ...prefix('/users', [
       index('routes/users/index.tsx'),
-      route(':id', 'routes/users/show.tsx')
+      route('add', 'routes/users/add.tsx'),
+      route(':id', 'routes/users/show.tsx'),
+      route(':id/edit', 'routes/users/edit.tsx'),
+      route(':id/delete', 'routes/users/delete.tsx'),
     ])
   ])
 ] satisfies RouteConfig;

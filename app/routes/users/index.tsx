@@ -1,6 +1,11 @@
-import { findUser } from "~/queries/user"
-import type { Route } from "./+types/index"
 import { Link } from "react-router"
+
+import { Button } from "~/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card"
+import { findUser } from "~/queries/user.server"
+import type { Route } from "./+types/index"
+import { columns } from "./columns"
+import { DataTable } from "./data-table"
 
 export async function loader() {
   const users = await findUser({})
@@ -9,15 +14,21 @@ export async function loader() {
 
 export default function Page({ loaderData: users }: Route.ComponentProps) {
   return (
-    <div>
-      <h1>Users</h1>
-      <ul className="list-disc list-inside">
-        {users.map((user) => (
-          <li key={user.id}>
-            <Link to={`/users/${user.id}`} className="hover:underline">{user.email}</Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Card>
+      <CardHeader className="flex-row items-center justify-between">
+        <div className="space-y-1.5">
+          <CardTitle>Users</CardTitle>
+          <CardDescription>List of users</CardDescription>
+        </div>
+        <Button asChild>
+          <Link to="/users/add">
+            Add user
+          </Link>
+        </Button>
+      </CardHeader>
+      <CardContent>
+        <DataTable columns={columns} data={users} />
+      </CardContent>
+    </Card>
   )
 }

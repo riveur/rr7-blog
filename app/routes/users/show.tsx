@@ -1,4 +1,4 @@
-import { findUser, findUserById } from "~/queries/user"
+import { findUserById } from "~/queries/user.server"
 import type { Route } from "./+types/show"
 
 export async function loader({ params }: Route.LoaderArgs) {
