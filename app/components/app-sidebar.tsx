@@ -1,6 +1,6 @@
 import { FileTextIcon } from "lucide-react"
 import * as React from "react"
-import { Link } from "react-router"
+import { Link, NavLink } from "react-router"
 
 import {
   Sidebar,
@@ -57,8 +57,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <SidebarMenu>
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild isActive={false}>
-                      <a href={item.url}>{item.title}</a>
+                    <SidebarMenuButton asChild>
+                      <NavLink to={item.url}>{item.title}</NavLink>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
