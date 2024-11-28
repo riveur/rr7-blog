@@ -22,6 +22,7 @@ export default function Page({ loaderData: post }: Route.ComponentProps) {
   const editor = useEditor({
     extensions: extensions,
     content: post.content,
+    immediatelyRender: false,
     editable: false
   })
 
