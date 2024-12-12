@@ -1,4 +1,4 @@
-import { FileTextIcon } from "lucide-react"
+import { FileEditIcon, FileTextIcon, UsersIcon } from "lucide-react"
 import * as React from "react"
 import { Link, NavLink } from "react-router"
 
@@ -23,10 +23,12 @@ const items = [
       {
         title: "Users",
         url: "/users",
+        icon: UsersIcon,
       },
       {
         title: "Posts",
         url: "/posts",
+        icon: FileEditIcon
       },
     ],
   },
@@ -57,8 +59,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <SidebarMenu>
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
-                      <NavLink to={item.url}>{item.title}</NavLink>
+                    <SidebarMenuButton size="lg" asChild>
+                      <NavLink to={item.url}>
+                        <item.icon className="size-5" />
+                        <span>{item.title}</span>
+                      </NavLink>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
